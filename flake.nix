@@ -19,7 +19,7 @@
       {
         packages.default = pypkgs.buildPythonPackage {
           pname = "ccproxy-api";
-          version = "git";
+          version = "0.2.3";
           pyproject = true;
           src = ./.;
 
@@ -59,6 +59,9 @@
 
           doCheck = false;
           pythonImportsCheck = [ "ccproxy" ];
+
+          # Hatch-vcs requires an explicit version when .git is not present in Nix builds.
+          HATCH_VCS_VERSION = "0.2.3";
         };
 
         apps.default = {
